@@ -7,6 +7,7 @@ import { GameState, PersistedState } from "./types";
 const initialState: GameState = {
   answers: Array(6).fill(""),
   attempt: 0,
+  lastCompletedDate: null,
 };
 
 interface Config {
@@ -50,6 +51,7 @@ export default function useGame(config: Config): Game {
         setState({
           answers: Array(6).fill(""),
           attempt: 0,
+          lastCompletedDate: state.lastCompletedDate,
         });
       }
       // not yet ready for a new game

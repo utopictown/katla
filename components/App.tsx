@@ -6,8 +6,9 @@ import Keyboard from "./Keyboard";
 import { GameStats } from "../utils/types";
 import { decode } from "../utils/codec";
 import { getCongratulationMessage } from "../utils/message";
-import { getTotalPlay } from "../utils/score";
+import { getTotalPlay, verifyStreak } from "../utils/score";
 import { Game } from "../utils/useGame";
+import formatDate from "../utils/formatDate";
 
 interface Props {
   game: Game;
@@ -45,6 +46,7 @@ export default function App(props: Props) {
         return answer;
       }),
       attempt: game.state.attempt,
+      lastCompletedDate: game.state.lastCompletedDate,
     });
   }
 
@@ -62,6 +64,7 @@ export default function App(props: Props) {
         return answer;
       }),
       attempt: game.state.attempt,
+      lastCompletedDate: game.state.lastCompletedDate,
     });
   }
 
@@ -113,6 +116,7 @@ export default function App(props: Props) {
         return answer;
       }),
       attempt: game.state.attempt + 1,
+      lastCompletedDate: game.state.lastCompletedDate,
     });
 
     isAnimating.current = true;
@@ -120,15 +124,34 @@ export default function App(props: Props) {
       isAnimating.current = false;
 
       if (answer === userAnswer) {
+        const isStreak = verifyStreak(game.state.lastCompletedDate);
+        let currentStreak = stats.currentStreak + 1;
+        if (!isStreak) {
+          currentStreak = 1;
+        }
+
+        game.setState({
+          answers: game.state.answers.map((answer, i) => {
+            if (i === game.state.attempt) {
+              return userAnswer;
+            }
+
+            return answer;
+          }),
+          attempt: game.state.attempt + 1,
+          lastCompletedDate: formatDate(new Date()),
+        });
+
         setStats({
           distribution: {
             ...stats.distribution,
             [game.state.attempt + 1]:
               stats.distribution[game.state.attempt + 1] + 1,
           },
-          currentStreak: stats.currentStreak + 1,
-          maxStreak: Math.max(stats.maxStreak, stats.currentStreak + 1),
+          currentStreak,
+          maxStreak: Math.max(stats.maxStreak, currentStreak),
         });
+
         const message = getCongratulationMessage(
           game.state.attempt,
           getTotalPlay(stats)
