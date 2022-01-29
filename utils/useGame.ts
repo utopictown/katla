@@ -70,7 +70,7 @@ export default function useGame(
 
   return {
     words,
-    hash: currentHash,
+    hash: "b1:teFyu0",
     date: config.date,
     ready: gameReady && words.length > 0,
     state,
