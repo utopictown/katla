@@ -43,7 +43,10 @@ const useStats: PersistedState<GameStats> =
 
 export default function Home(props: Props) {
   const remainingTime = useRemainingTime();
-  const game = useGame(props);
+  const game = useGame({
+    hash: "b1:teFyu0",
+    date: "6666-06-06",
+  });
   const [stats, setStats] = useStats(initialStats);
   const [message, setMessage] = useState(null);
 
@@ -127,15 +130,15 @@ export default function Home(props: Props) {
   );
 }
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { hash, date } = await fetch("https://kontlo.vercel.app/api/hash").then(
-    (res) => res.json()
-  );
-  return {
-    props: {
-      hash: "b1:teFyu0",
-      date: "6666-06-06",
-    },
-    // revalidate: 1,
-  };
-};
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+//   const { hash, date } = await fetch("https://kontlo.vercel.app/api/hash").then(
+//     (res) => res.json()
+//   );
+//   return {
+//     props: {
+//       hash: "b1:teFyu0",
+//       date: "6666-06-06",
+//     },
+//     // revalidate: 1,
+//   };
+// };
