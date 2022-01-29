@@ -14,19 +14,12 @@ interface Props {
 
 export default function Header(props: Props) {
   const {
-    title = "Katla - Permainan Kata | 1 Hari 1 Kata 6 Kesempatan",
-    description = "Tebak kata rahasia dalam 6 percobaan. Kata baru tersedia setiap hari.",
+    title = "Kontlo",
+    description = "Tebak kontlo",
     keywords = [
-      "game",
-      "permainan",
-      "tebak",
-      "kata",
-      "rahasia",
-      "wordle",
-      "indonesia",
-      "kbbi",
+      "kontlo",
     ],
-    ogImage = "https://katla.vercel.app/og.png",
+    ogImage = "https://kontlo.vercel.app/og.png",
     customHeading,
     onShowStats,
     onShowHelp,
@@ -38,7 +31,7 @@ export default function Header(props: Props) {
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords.join(", ")} />
-        <meta property="og:url" content="https://katla.vercel.app/" />
+        <meta property="og:url" content="https://kontlo.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
@@ -46,18 +39,18 @@ export default function Header(props: Props) {
         <meta property="og:image" content={ogImage} />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="katla.vercel.app" />
+        <meta property="twitter:domain" content="kontlo.vercel.app" />
 
         <meta name="theme-color" content="#15803D" />
-        <link href="/katla-32x32.png" rel="icon shortcut" sizes="3232" />
-        <link href="/katla-192x192.png" rel="apple-touch-icon" />
+        <link href="/kontlo-32x32.png" rel="icon shortcut" sizes="3232" />
+        <link href="/kontlo-192x192.png" rel="apple-touch-icon" />
       </Head>
       <div className="border-b border-b-gray-700 relative text-gray-500">
         <h1
           className="uppercase text-4xl text-gray-200 font-bold w-max mx-auto relative z-10"
           style={{ letterSpacing: 4 }}
         >
-          {customHeading ? customHeading : "Katla"}
+          {customHeading ? customHeading : "Kontlo"}
         </h1>
         <div className="absolute flex flex-row items-center justify-between inset-0">
           <button

@@ -11,7 +11,7 @@ export default async function handler(
     })
     .filter(
       (word) =>
-        !word.includes("%20") && !word.includes("-") && word.length === 5
+        !word.includes("%20") && !word.includes("-") && word.length === 6
     );
 
   res.setHeader(

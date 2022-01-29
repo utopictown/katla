@@ -12,7 +12,7 @@ export function getAnswerStates(
   userAnswer: string,
   answer: string
 ): AnswerStates {
-  const states: AnswerStates = Array(5).fill(null) as any;
+  const states: AnswerStates = Array(6).fill(null) as any;
 
   const answerChars = answer.split("");
   const userAnswerChars = userAnswer.split("");

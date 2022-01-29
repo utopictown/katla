@@ -47,7 +47,7 @@ export default function StatsModal(props: Props) {
       game.state.answers[game.state.attempt - 1] === answer
         ? game.state.attempt
         : "X";
-    let text = `Katla ${num} ${score}/6\n\n`;
+    let text = `Kontlo ${score}/6\n\n`;
 
     game.state.answers.filter(Boolean).forEach((userAnswer) => {
       const answerEmojis = getAnswerStates(userAnswer, answer).map((state) => {
@@ -63,7 +63,7 @@ export default function StatsModal(props: Props) {
       text += `${answerEmojis.join("")}\n`;
     });
 
-    text += "\nhttps://katla.vercel.app";
+    text += "\nhttps://kontlo.vercel.app";
     return text;
   }
 

@@ -23,11 +23,11 @@ export default function Board(props: Props) {
         .fill("")
         .map((_, i) => {
           let userAnswer = gameState.answers[i] ?? "";
-          userAnswer += " ".repeat(5 - userAnswer.length);
+          userAnswer += " ".repeat(6 - userAnswer.length);
 
           const answerStates = getAnswerStates(userAnswer, answer);
           return (
-            <div className="grid grid-cols-5 gap-1.5 relative" key={i}>
+            <div className="grid grid-cols-6 gap-1.5 relative" key={i}>
               {userAnswer.split("").map((char, index) => {
                 let state = null;
                 if (i < gameState.attempt) {

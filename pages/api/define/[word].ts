@@ -15,7 +15,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const word = req.query.word as string;
+  const word = "kontol" as string;
 
   let definitions: String[] | null = null;
   try {

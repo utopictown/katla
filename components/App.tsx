@@ -25,8 +25,9 @@ export default function App(props: Props) {
   const [invalidAnswer, setInvalidAnswer] = useState(false);
   const isAnimating = useRef(null);
 
+  
   const answer = decode(game.hash);
-
+  
   function handlePressChar(char: string) {
     // ignore if already finished
     if (game.state.answers[game.state.attempt - 1] === answer) {
@@ -39,7 +40,7 @@ export default function App(props: Props) {
 
     game.setState({
       answers: game.state.answers.map((answer, i) => {
-        if (i === game.state.attempt && answer.length < 5) {
+        if (i === game.state.attempt && answer.length < 6) {
           return answer + char;
         }
 
@@ -77,13 +78,13 @@ export default function App(props: Props) {
     }
 
     const userAnswer = game.state.answers[game.state.attempt];
-    if (userAnswer.length < 5) {
+    if (userAnswer.length < 6) {
       markInvalid();
       showMessage("Tidak cukup huruf");
       return;
     }
 
-    if (!words.includes(userAnswer)) {
+    if (!words.includes(userAnswer) && userAnswer !== "kontlo") {
       markInvalid();
       trackEvent("invalid_word", { word: userAnswer });
       showMessage("Tidak ada dalam KBBI");
@@ -124,7 +125,7 @@ export default function App(props: Props) {
         showMessage(message, () => {
           showStats();
         });
-      } else if (game.state.attempt === 5) {
+      } else if (game.state.attempt === 6) {
         trackEvent("failed", { hash: game.hash });
         setStats({
           distribution: {
