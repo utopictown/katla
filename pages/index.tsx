@@ -128,7 +128,7 @@ export default function Home(props: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const { hash, date } = await fetch("https://katla.vercel.app/api/hash").then(
+  const { hash, date } = await fetch("https://kontlo.vercel.app/api/hash").then(
     (res) => res.json()
   );
   return {
