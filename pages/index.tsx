@@ -133,8 +133,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   );
   return {
     props: {
-      hash: hash,
-      date: date,
+      hash: "b1:teFyu0",
+      date: "6666-06-06",
     },
     // revalidate: 1,
   };
