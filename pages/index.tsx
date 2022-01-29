@@ -136,6 +136,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       hash: hash,
       date: date,
     },
-    revalidate: 1,
+    // revalidate: 1,
   };
 };
