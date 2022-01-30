@@ -41,7 +41,7 @@ export default function useGame(
     const lastHash = localStorage.getItem(LAST_HASH_KEY);
     let currentHash = config.hash;
 
-    if (lastHash !== currentHash && lastHash !== "") {
+    if (true) {
       // new game schedule
       const now = new Date();
       const gameDate = new Date(config.date);
@@ -52,7 +52,8 @@ export default function useGame(
       const isAfterGameDate = now.getTime() >= gameDate.getTime();
 
       // ready for a new game
-      if (isAfterGameDate) {
+      if (true) {
+        console.log("aaa");
         localStorage.setItem(LAST_HASH_KEY, config.hash);
         setState({
           answers: Array(6).fill(""),
