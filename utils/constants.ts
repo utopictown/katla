@@ -1,3 +1,4 @@
-export const LAST_HASH_KEY = "katla:lastHash";
-export const GAME_STATE_KEY = "katla:gameState";
-export const GAME_STATS_KEY = "katla:gameStats";
+export const LAST_HASH_KEY = "kontlo:lastHash";
+export const GAME_STATE_KEY = "kontlo:gameState";
+export const GAME_STATS_KEY = "kontlo:gameStats";
+export const LAST_PLAY_DATE = "kontlo:lastPlayDate";

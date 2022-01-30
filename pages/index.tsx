@@ -14,7 +14,7 @@ import SettingsModal from "../components/SettingsModal";
 import useGame from "../utils/useGame";
 import { decode } from "../utils/codec";
 import { getTotalPlay } from "../utils/score";
-import { GAME_STATS_KEY } from "../utils/constants";
+import { GAME_STATS_KEY, LAST_PLAY_DATE } from "../utils/constants";
 import { GameStats, PersistedState } from "../utils/types";
 import useRemainingTime from "../utils/useRemainingTime";
 import HeadingWithNum from "../components/HeadingWithNum";
@@ -41,6 +41,9 @@ const initialStats: GameStats = {
 const useStats: PersistedState<GameStats> =
   createPersistedState(GAME_STATS_KEY);
 
+export const useLastPlayDate: PersistedState<string> =
+  createPersistedState(LAST_PLAY_DATE);
+
 export default function Home(props: Props) {
   const remainingTime = useRemainingTime();
   const game = useGame({
@@ -48,6 +51,7 @@ export default function Home(props: Props) {
     date: "6666-06-06",
   });
   const [stats, setStats] = useStats(initialStats);
+  const [lastPlayDate, setLastPlayDate] = useLastPlayDate(new Date().toLocaleDateString());
   const [message, setMessage] = useState(null);
 
   const start = new Date("2022-01-20");
@@ -111,6 +115,8 @@ export default function Home(props: Props) {
         stats={stats}
         setStats={setStats}
         showStats={() => setShowStats(true)}
+        lastPlayDate={lastPlayDate}
+        setLastPlayDate={setLastPlayDate}
         showMessage={showMessage}
       />
       <HelpModal isOpen={showHelp} onClose={() => setShowHelp(false)} />

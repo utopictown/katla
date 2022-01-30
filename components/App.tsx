@@ -14,12 +14,14 @@ interface Props {
   game: Game;
   stats: GameStats;
   setStats: (stats: GameStats) => void;
+  lastPlayDate: String;
+  setLastPlayDate: (stats: String) => void;
   showMessage: (message: string, cb?: () => void) => void;
   showStats: () => void;
 }
 
 export default function App(props: Props) {
-  const { game, stats, setStats, showMessage, showStats } = props;
+  const { game, stats, setStats, showMessage, showStats, lastPlayDate, setLastPlayDate } = props;
   const words = game.words;
 
   const [invalidAnswer, setInvalidAnswer] = useState(false);
@@ -125,6 +127,7 @@ export default function App(props: Props) {
         showMessage(message, () => {
           showStats();
         });
+        setLastPlayDate(new Date().toLocaleDateString());
       } else if (game.state.attempt === 6) {
         trackEvent("failed", { hash: game.hash });
         setStats({

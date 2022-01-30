@@ -5,6 +5,7 @@ import useSWR from "swr";
 import { LAST_HASH_KEY, GAME_STATE_KEY } from "./constants";
 import fetcher from "./fetcher";
 import { GameState, PersistedState } from "./types";
+import { useLastPlayDate } from "../pages";
 
 const initialState: GameState = {
   answers: Array(6).fill(""),
@@ -28,9 +29,10 @@ const useGamePersistedState: PersistedState<GameState> =
 
 export default function useGame(
   config: Config,
-  useGameState = useGamePersistedState
+  useGameState = useGamePersistedState,
 ): Game {
   const [state, setState] = useGameState(initialState);
+  const [lastPlayDate] = useLastPlayDate(new Date().toLocaleDateString());
   const [gameReady, setGameReady] = useState(false);
   const [currentHash, setCurrentHash] = useState(config.hash);
   const { data: words = [] } = useSWR("/api/words", fetcher);
@@ -44,16 +46,15 @@ export default function useGame(
     if (true) {
       // new game schedule
       const now = new Date();
-      const gameDate = new Date(config.date);
+      const gameDate = new Date(lastPlayDate);
       gameDate.setHours(0);
       gameDate.setMinutes(0);
       gameDate.setSeconds(0);
       gameDate.setMilliseconds(0);
-      const isAfterGameDate = now.getTime() >= gameDate.getTime();
+      const isAfterGameDate = now.getTime() > gameDate.getTime();
 
       // ready for a new game
-      if (true) {
-        console.log("aaa");
+      if (isAfterGameDate) {
         localStorage.setItem(LAST_HASH_KEY, config.hash);
         setState({
           answers: Array(6).fill(""),
