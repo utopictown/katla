@@ -241,7 +241,7 @@ function WordDefinition({ answer }) {
 
   return (
     <div className="w-10/12 mx-auto mb-8">
-      <h3 className="uppercase font-semibold">Katla hari ini</h3>
+      <h3 className="uppercase font-semibold">Kontlo hari ini</h3>
       <p className="text-xs mb-2 text-gray-400">
         Mohon untuk tetap dirahasiakan
       </p>
@@ -263,7 +263,7 @@ function WordDefinition({ answer }) {
       </p>
       <a
         className="text-green-600 text-sm"
-        href={`https://kbbi.kemdikbud.go.id/entri/${answer}`}
+        href={`https://kbbi.kemdikbud.go.id/entri/kontol`}
       >
         Lihat di KBBI
       </a>
