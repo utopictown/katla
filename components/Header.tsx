@@ -40,6 +40,7 @@ export default function Header(props: Props) {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="kontlo.vercel.app" />
+        <meta property="twitter:creator" content="@dystopictown"></meta>
 
         <meta name="theme-color" content="#15803D" />
         <link href="/kontlo-32x32.png" rel="icon shortcut" sizes="3232" />
