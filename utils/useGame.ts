@@ -51,7 +51,7 @@ export default function useGame(
       gameDate.setMinutes(0);
       gameDate.setSeconds(0);
       gameDate.setMilliseconds(0);
-      const isAfterGameDate = now.getTime() > gameDate.getTime();
+      const isAfterGameDate = now.toLocaleDateString() > gameDate.toLocaleDateString();
 
       // ready for a new game
       if (isAfterGameDate) {
