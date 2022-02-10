@@ -1,20 +1,20 @@
 export function getCongratulationMessage(attempt: number, totalPlay: number) {
   if (totalPlay === 0 && attempt === 0) {
-    return "Curang bukan nih?";
+    return "Kontlo";
   }
 
   switch (attempt) {
     case 0:
-      return "Hoki? Atau kena spoiler?";
+      return "Kontlo";
     case 1:
-      return "Luar Biasa";
+      return "Kontlo";
     case 2:
-      return "Mantap";
+      return "Kontlo";
     case 3:
-      return "Bagus Sekali";
+      return "Kontlo";
     case 4:
-      return "Bagus";
+      return "Kontlo";
     default:
-      return "Nyaris!!";
+      return "Kontlo!!";
   }
 }
